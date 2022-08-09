@@ -10,6 +10,7 @@ const server = new ApolloServer({
 
 app.use('/public/dist', (req, res) => res.sendFile(__dirname + '/public/dist/bundle.js'));
 app.get('/apolloPOC', (req, res) => res.sendFile(__dirname + '/views/apolloPOC.html'));
+app.get('/reactPOC', (req, res) => res.sendFile(__dirname + '/views/reactPOC.html'));
 
 (async function startServer() {
 	await server.start();

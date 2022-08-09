@@ -1,6 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  gql,
+  useMutation,
+} from '@apollo/client';
 
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache(),
+});
+
+client
+  .query({
+    query: gql`
+    query potatoAuth {
+	potatoQuery {
+	  isPotato
+	}
+      }
+    `,
+  })
+  .then((result) => console.log(result));
+const POTATO_AUTH_MUTATION = gql`
+  mutation potatoAuth {
+    potatoAuthMutation {
+      isPotato
+    }
+  }
+`;
 function App() {
   const [pubCredVerifiedState, setPubCredVerifiedState] = React.useState(false);
   const [pubCredState, setPubCredState] = React.useState('');

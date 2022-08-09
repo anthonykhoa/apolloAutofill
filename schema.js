@@ -9,6 +9,7 @@ const typeDefs = gql`
   }
   type Mutation {
     potatoAuth: Potato
+    potatoPubCred: Potato
   }
 `;
 
@@ -18,6 +19,7 @@ const resolvers = {
   },
   Mutation: {
     potatoAuth: () => ({ isPotato: true }),
+    potatoPubCred: () => ({ isPotato: true }),
   },
 };
 

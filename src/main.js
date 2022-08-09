@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
   ApolloClient,
@@ -22,9 +22,9 @@ const POTATO_AUTH_MUTATION = gql`
 `;
 
 function App() {
-  const [pubCredVerifiedState, setPubCredVerifiedState] = React.useState(false);
-  const [pubCredState, setPubCredState] = React.useState('');
-  const [passwordState, setPasswordState] = React.useState('');
+  const [pubCredVerifiedState, setPubCredVerifiedState] = useState(false);
+  const [pubCredState, setPubCredState] = useState('');
+  const [passwordState, setPasswordState] = useState('');
   return (
     <ApolloProvider client={client}>
       <form autoComplete="on" noValidate>
@@ -67,7 +67,7 @@ function PasswordView({
     },
   });
   return (
-    <React.Fragment>
+    <>
       <input
         autoComplete="current-password"
         type="password"
@@ -98,7 +98,7 @@ function PasswordView({
       >
         change
       </button>
-    </React.Fragment>
+    </>
   );
 }
 function PubCredView({
@@ -113,7 +113,7 @@ function PubCredView({
     },
   });
   return (
-    <React.Fragment>
+    <>
       <input
         type="email"
         autoComplete="username"
@@ -135,7 +135,7 @@ function PubCredView({
       >
         next
       </button>
-    </React.Fragment>
+    </>
   );
 }
 

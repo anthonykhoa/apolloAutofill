@@ -22,6 +22,6 @@ app.get("/reactPOC", (req, res) =>
   server.applyMiddleware({ app })
 
   app.listen({ port: 3015 }, () =>
-    console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+    console.log(`🚀 Server ready at http://localhost:3015${server.graphqlPath}`)
   )
 })()

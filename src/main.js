@@ -10,6 +10,7 @@ import {
 
 const client = new ApolloClient({
   uri: "https://autofill.khoa.app/graphql",
+  //uri: 'http://localhost:3015/graphql',
   cache: new InMemoryCache(),
 })
 

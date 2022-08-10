@@ -115,28 +115,15 @@ function PubCredView({
   })
   return (
     <>
-      {false && (
-        <input
-          type="email"
-          autoComplete="username"
-          value={pubCredState}
-          onChange={(e) => setPubCredState(e.target.value)}
-        />
-      )}
       <input
-        class="ppvx_text-input__control___3-13-16"
         name="email"
         id="text-input-email"
         aria-invalid="false"
         placeholder=" "
+        value={pubCredState}
+        onChange={(e) => setPubCredState(e.target.value)}
       />
-      <label
-        for="text-input-email"
-        id="text-input-email-label"
-        class="ppvx_text-input__label___3-13-16"
-      >
-        Email or phone number
-      </label>
+      <label for="text-input-email">Email or phone number</label>
       <button
         id="next"
         type="submit"

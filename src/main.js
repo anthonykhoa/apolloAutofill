@@ -76,7 +76,7 @@ function PasswordView({
         onChange={(e) => setPasswordState(e.target.value)}
       />
       <input
-        style={{ opacity: 0, zIndex: -99, position: "absolute" }}
+        style={{ display: "none" }}
         type="email"
         value={pubCredState}
         autoComplete="username"

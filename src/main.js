@@ -22,33 +22,36 @@ const POTATO_AUTH_MUTATION = gql`
   }
 `
 
-function App() {
+function FormPage() {
   const [pubCredVerifiedState, setPubCredVerifiedState] = useState(false)
   const [pubCredState, setPubCredState] = useState("")
   const [passwordState, setPasswordState] = useState("")
+  return pubCredVerifiedState ? (
+    <PasswordView
+      pubCredState={pubCredState}
+      setPasswordState={setPasswordState}
+      passwordState={passwordState}
+      setPubCredVerifiedState={setPubCredVerifiedState}
+      setPubCredState={setPubCredState}
+    />
+  ) : (
+    <PubCredView
+      setPubCredVerifiedState={setPubCredVerifiedState}
+      pubCredState={pubCredState}
+      setPasswordState={setPasswordState}
+      setPubCredState={setPubCredState}
+    />
+  )
+}
+
+function App() {
   return (
     <ApolloProvider client={client}>
-      <form autoComplete="on" noValidate>
-        {pubCredVerifiedState ? (
-          <PasswordView
-            pubCredState={pubCredState}
-            setPasswordState={setPasswordState}
-            passwordState={passwordState}
-            setPubCredVerifiedState={setPubCredVerifiedState}
-            setPubCredState={setPubCredState}
-          />
-        ) : (
-          <PubCredView
-            setPubCredVerifiedState={setPubCredVerifiedState}
-            pubCredState={pubCredState}
-            setPasswordState={setPasswordState}
-            setPubCredState={setPubCredState}
-          />
-        )}
-      </form>
+      <FormPage />
     </ApolloProvider>
   )
 }
+
 function PasswordView({
   pubCredState,
   setPasswordState,
@@ -60,6 +63,7 @@ function PasswordView({
     onCompleted: async (data) => {
       setPubCredVerifiedState(false)
       setPubCredState("")
+      setPasswordState("")
     },
   })
   const [potatoLogin] = useMutation(POTATO_AUTH_MUTATION, {
@@ -68,19 +72,22 @@ function PasswordView({
     },
   })
   return (
-    <>
+    <form>
       <input
         autoComplete="current-password"
         type="password"
         value={passwordState}
         onChange={(e) => setPasswordState(e.target.value)}
       />
-      <input
-        style={{ display: "none" }}
-        type="email"
-        value={pubCredState}
-        autoComplete="username"
-      />
+      <label for="password">Password</label>
+      {false && (
+        <input
+          style={{ display: "none" }}
+          type="email"
+          value={pubCredState}
+          autoComplete="username"
+        />
+      )}
       <button
         type="submit"
         onClick={(e) => {
@@ -99,7 +106,7 @@ function PasswordView({
       >
         change
       </button>
-    </>
+    </form>
   )
 }
 function PubCredView({
@@ -114,7 +121,7 @@ function PubCredView({
     },
   })
   return (
-    <>
+    <form>
       <input
         name="email"
         id="text-input-email"
@@ -134,7 +141,7 @@ function PubCredView({
       >
         next
       </button>
-    </>
+    </form>
   )
 }
 

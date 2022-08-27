@@ -80,14 +80,12 @@ function PasswordView({
         onChange={(e) => setPasswordState(e.target.value)}
       />
       <label for="password">Password</label>
-      {false && (
-        <input
-          style={{ display: "none" }}
-          type="email"
-          value={pubCredState}
-          autoComplete="username"
-        />
-      )}
+      <input
+        style={{ display: "none" }}
+        type="email"
+        value={pubCredState}
+        autoComplete="username"
+      />
       <button
         type="submit"
         onClick={(e) => {

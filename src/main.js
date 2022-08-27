@@ -74,18 +74,11 @@ function PasswordView({
   return (
     <form>
       <input
-        autoComplete="current-password"
         type="password"
         value={passwordState}
         onChange={(e) => setPasswordState(e.target.value)}
       />
       <label for="password">Password</label>
-      <input
-        style={{ display: "none" }}
-        type="email"
-        value={pubCredState}
-        autoComplete="username"
-      />
       <button
         type="submit"
         onClick={(e) => {

@@ -9,8 +9,8 @@ import {
 } from "@apollo/client"
 
 const client = new ApolloClient({
-  uri: "https://autofill.khoa.app/graphql",
-  //uri: 'http://localhost:3015/graphql',
+  // uri: "https://autofill.khoa.app/graphql",
+  uri: 'http://localhost:3015/graphql',
   cache: new InMemoryCache(),
 })
 
@@ -115,9 +115,8 @@ function PubCredView({
     <form>
       <input
         name="email"
+        autocomplete="username"
         id="text-input-email"
-        aria-invalid="false"
-        placeholder=" "
         value={pubCredState}
         onChange={(e) => setPubCredState(e.target.value)}
       />

@@ -13,13 +13,15 @@ const typeDefs = gql`
   }
 `;
 
+const isPotato = { isPotato: true }
+
 const resolvers = {
   Query: {
-    potatoQuery: () => ({ isPotato: true }),
+    potatoQuery: () => isPotato,
   },
   Mutation: {
-    potatoAuth: () => ({ isPotato: true }),
-    potatoPubCred: () => ({ isPotato: true }),
+    potatoAuth: () => isPotato,
+    potatoPubCred: () => isPotato,
   },
 };
 

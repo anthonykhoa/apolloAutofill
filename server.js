@@ -1,25 +1,31 @@
 const { ApolloServer } = require("apollo-server-express")
 const { typeDefs, resolvers } = require("./schema")
 const express = require("express")
-const app = express()
+const app = express();
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 })
 
-app.use("/public/dist", (req, res) =>
+const router = express.Router()
+router.use("/public/dist", (req, res) =>
   res.sendFile(__dirname + "/public/dist/bundle.js")
 )
-app.get("/test/apolloPOC", (req, res) =>
+router.get("/apolloPOC", (req, res) =>
   res.sendFile(__dirname + "/views/apolloPOC.html")
 )
-app.get("/test/reactPOC", (req, res) =>
+router.get("/reactPOC", (req, res) =>
   res.sendFile(__dirname + "/views/reactPOC.html")
 )
-app.get("/test/test", (req, res) =>
+router.get("/test", (req, res) =>
   res.sendFile(__dirname + "/views/test.html")
 )
+
+router.get("/womp", (req, res) =>
+  res.sendFile(__dirname + "/views/womp.html")
+)
+app.use('/test', router);
 ;(async function startServer() {
   await server.start()
   server.applyMiddleware({ app })

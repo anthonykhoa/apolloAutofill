@@ -16,21 +16,21 @@
 
 <script>
 	const runFunc = () => {
-		console.log('potatao')
 		document.body.innerHTML = `
-	<form>
-<input id="password" type="password" autocomplete="current-password">
-	<input id="email-i" name="login_email" type="email" value="" autocomplete="username">
-		<label for="password" class="fieldLabel">Password</label>
-		<button onclick="window.location.assign('https://www.google.com')">Next</button>
-	</form>
+			<form>
+				<input id="password" type="password" autocomplete="current-password">
+				<input id="email-i" name="login_email" type="email" autocomplete="username">
+				<label for="password" class="fieldLabel">Password</label>
+				<button onclick="window.location.assign('https://www.google.com')">Next</button>
+			</form>
 		`
 	}
 </script>
+
 <body>
 	<form>
-		<input id="email" name="login_email" type="email" autocomplete="username" >
-			<label for="email" class="fieldLabel">Email or mobile number</label>
+		<input id="email" name="login_email" type="email" autocomplete="username">
+		<label for="email" class="fieldLabel">Email or mobile number</label>
 		<button onclick="runFunc()">Next</button>
 	</form>
 </body>

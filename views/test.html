@@ -17,16 +17,20 @@
 <script>
 	const runFunc = () => {
 		document.body.innerHTML = `
+			<form>
 				<input type="password" autocomplete="current-password">
 				<input class="email-i" type="email" autocomplete="username">
 				<button onclick="window.location.assign('https://www.google.com')">Next</button>
+			</form>
 		`
 	}
 </script>
 
 <body>
+	<form>
 		<input type="email" autocomplete="username">
 		<button onclick="runFunc()">Next</button>
+	</form>
 </body>
 <script>
 </script>

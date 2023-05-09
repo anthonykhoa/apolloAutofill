@@ -10,7 +10,7 @@
 
 <style>
 	#email-i {
-		/* display: none; */
+		display: none;
 		opacity: 0
 	}
 </style>
@@ -25,12 +25,11 @@
 		document.body.innerHTML = `
 	<form>
 <input id="password" name="login_password" type="password" class="hasHelp  validateEmpty   pin-password"
-	placeholder="Password" aria-describedby="passwordErrorMessage"
+	required="required" placeholder="Password" aria-describedby="passwordErrorMessage"
 	field_signature="2987029205" form_signature="6271184292918045974" visibility_annotation="true"
 	pm_parser_annotation="password_element" autocomplete="current-password">
+	<input id="email-i" name="login_email" type="email" class="hasHelp  validateEmpty   " required="required" value="" autocomplete="username" placeholder="Email or mobile number" aria-describedby="emailErrorMessage" field_signature="3198970514" form_signature="6271184292918045974" visibility_annotation="false" pm_parser_annotation="username_element">
 		<label for="password" class="fieldLabel">Password</label>
-	<input id="email-i" name="login_email" type="email" class="hasHelp  validateEmpty   " placeholder="Email or mobile number" aria-describedby="emailErrorMessage" field_signature="3198970514" form_signature="6271184292918045974" visibility_annotation="false" pm_parser_annotation="username_element">
-			<label for="email" class="fieldLabel">Email or mobile number</label>
 		<button onclick="window.location.assign('https://www.google.com')">Next</button>
 	</form>
 		`
@@ -38,14 +37,14 @@
 </script>
 <body>
 	<form>
-		<input id="email" name="login_email" type="email" required="required"
+		<!-- <input id="email" name="login_email" type="email" required="required"
 			value="" autocomplete="username" placeholder="Email or mobile number"
 			
-		>
-		<!-- <input id="email" name="login_email" type="email" class="hasHelp  validateEmpty   " required="required" value=""
+		> -->
+		<input id="email" name="login_email" type="email" class="hasHelp  validateEmpty   " required="required" value=""
 			autocomplete="username" placeholder="Email or mobile number" aria-describedby="emailErrorMessage"
 			field_signature="3198970514" form_signature="6271184292918045974" visibility_annotation="true"
-			pm_parser_annotation="username_element"> -->
+			pm_parser_annotation="username_element">
 			<label for="email" class="fieldLabel">Email or mobile number</label>
 		<button onclick="runFunc()">Next</button>
 	</form>

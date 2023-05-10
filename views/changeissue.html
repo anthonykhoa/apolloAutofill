@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Noob</title>
+</head>
+
+<style>
+	.email-i {
+		display: none;
+	}
+</style>
+
+<script>
+</script>
+<script>
+	const clickChange = () => {
+		document.body.innerHTML = `
+			<form>
+				<input autocomplete="username">
+				<button onclick="runFunc()">Next</button>
+			</form>
+		`
+	}
+	const showPasswordPage = () => {
+		document.body.innerHTML = `
+			<form>
+				<input type="password">
+				<input class="email-i" type="email" autocomplete="username">
+				<button onclick="window.location.assign('https://www.google.com')">Login</button>
+				<button onclick="clickChange()">Change</button>
+			</form>
+		`
+	}
+</script>
+
+<body>
+	<form>
+		<input autocomplete="username">
+		<button onclick="showPasswordPage()">Next</button>
+	</form>
+</body>
+<script>
+</script>
+
+</html>

@@ -14,25 +14,46 @@
 	}
 </style>
 
-<script>
-	const runFunc = () => {
-		document.body.innerHTML = `
-			<form>
-				<input type="password">
-				<input class="email-i" type="email" autocomplete="username">
-				<button onclick="window.location.assign('https://www.google.com')">Login</button>
-			</form>
-		`
-	}
-</script>
-
 <body>
-	<form>
+	<form id="form">
 		<input autocomplete="username">
-		<button onclick="runFunc()">Next</button>
+		<button id="next">Next</button>
 	</form>
 </body>
 <script>
+	function formSubmit(e) {
+		e.preventDefault();
+	}
+	function clickChange (e) {
+		document.body.innerHTML = `
+			<form id="form">
+				<input autocomplete="username">
+				<button id="next">Next</button>
+			</form>
+		`
+		document.getElementById('next').addEventListener("click", showPasswordPage);
+		document.getElementById('form').addEventListener("submit", formSubmit);
+		// e.preventDefault();
+	}
+	function showPasswordPage (e) {
+		document.body.innerHTML = `
+			<form id="form">
+				<input type="password">
+				<input class="email-i" type="email" autocomplete="username">
+				<button onclick="window.location.assign('https://www.google.com')">Login</button>
+				<button id="change">Change</button>
+			</form>
+		`
+		document.getElementById('change').addEventListener("click", clickChange);
+		// e.preventDefault();
+	}
 </script>
 
+<script>
+	window.addEventListener("DOMContentLoaded", (event) => {
+  		console.log("DOM fully loaded");
+		document.getElementById('next').addEventListener("click", showPasswordPage);
+	document.getElementById('form').addEventListener("submit", formSubmit);
+	});
+</script>
 </html>

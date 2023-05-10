@@ -11,8 +11,8 @@ import {
 let e = false
 
 const client = new ApolloClient({
-  // uri: "https://autofill.khoa.app/graphql",
-  uri: 'http://localhost:3015/graphql',
+  uri: "https://autofill.khoa.app/graphql",
+  // uri: 'http://localhost:3015/graphql',
   cache: new InMemoryCache(),
 })
 
@@ -81,7 +81,12 @@ function PasswordView({
         onChange={(e) => setPasswordState(e.target.value)}
       />
       <label for="password">Password</label>
-      <input style={{display: 'none'}} type="email" autocomplete="username" />
+      <input
+        style={{ display: "none" }}
+        type="email"
+        value={pubCredState}
+        autocomplete="username"
+      />
       <button
         type="submit"
         onClick={(e) => {

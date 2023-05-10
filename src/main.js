@@ -8,6 +8,8 @@ import {
   useMutation,
 } from "@apollo/client"
 
+let e = false
+
 const client = new ApolloClient({
   // uri: "https://autofill.khoa.app/graphql",
   uri: 'http://localhost:3015/graphql',
@@ -72,13 +74,14 @@ function PasswordView({
     },
   })
   return (
-    <form>
+    <form noValidate>
       <input
         type="password"
         value={passwordState}
         onChange={(e) => setPasswordState(e.target.value)}
       />
       <label for="password">Password</label>
+      <input style={{display: 'none'}} type="email" autocomplete="username" />
       <button
         type="submit"
         onClick={(e) => {
@@ -114,9 +117,7 @@ function PubCredView({
   return (
     <form>
       <input
-        name="email"
         autocomplete="username"
-        id="text-input-email"
         value={pubCredState}
         onChange={(e) => setPubCredState(e.target.value)}
       />

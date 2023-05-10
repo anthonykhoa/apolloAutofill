@@ -9,7 +9,7 @@ const server = new ApolloServer({
 })
 
 const router = express.Router()
-router.use("/public/dist", (req, res) =>
+app.use("/public/dist", (req, res) =>
   res.sendFile(__dirname + "/public/dist/bundle.js")
 )
 router.get("/apolloPOC", (req, res) =>
@@ -24,6 +24,9 @@ router.get("/test", (req, res) =>
 
 router.get("/womp", (req, res) =>
   res.sendFile(__dirname + "/views/womp.html")
+)
+router.get("/bareDesktop", (req, res) =>
+  res.sendFile(__dirname + "/views/bareDesktop.html")
 )
 app.use('/test', router);
 ;(async function startServer() {

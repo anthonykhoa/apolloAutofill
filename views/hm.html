@@ -15,7 +15,9 @@
 </style>
 
 <script>
-	let emailValue;
+</script>
+
+<script>
 	const graphqlQuery = {
 		"operationName": "PotatoAuth",
 		"query": `mutation PotatoAuth { potatoAuth { isPotato } }`,
@@ -29,52 +31,29 @@
 			},
 		"body": JSON.stringify(graphqlQuery)
 	};
-	function formSubmit(e) {
-		// Needed to prevent auto reload of page upon form submission
+	async function showPasswordPage(e) {
 		e.preventDefault();
-	}
-	function clickChange (e) {
-		document.body.innerHTML = `
-			<form id="form">
-				<input autocomplete="username">
-				<button id="next" type="submit">Next</button>
-			</form>
-		`
-		document.getElementById('next').addEventListener("click", showPasswordPage);
-		document.getElementById('form').addEventListener("submit", formSubmit);
-		// e.preventDefault();
-	}
-	async function showPasswordPage (e) {
 		const res = await fetch('http://localhost:3015/graphql', options)
 		const pot = await res.json();
 		const dat = pot
 		console.log('[ptatp]', dat)
 		console.log('[ptatp]', pot.data.potatoAuth)
-		emailValue = document.querySelector('input').value
 		document.body.innerHTML = `
 			<form id="form">
 				<input type="password">
-				<input class="email-i" autocomplete="username" value=${emailValue}>
+				<input class="email-i" type="email" autocomplete="username">
 				<button onclick="window.location.assign('https://www.google.com')">Login</button>
 				<button id="change">Change</button>
 			</form>
 		`
-		document.getElementById('change').addEventListener("click", clickChange);
-		// e.preventDefault();
 	}
 </script>
 
-<script>
-	window.addEventListener("DOMContentLoaded", (event) => {
-  		console.log("DOM fully loaded");
-		document.getElementById('next').addEventListener("click", showPasswordPage);
-		document.getElementById('form').addEventListener("submit", formSubmit);
-	});
-</script>
 <body>
 	<form id="form">
 		<input autocomplete="username">
-		<button id="next">Next</button>
+		<button id="next" onclick="showPasswordPage()">Next</button>
 	</form>
 </body>
+
 </html>

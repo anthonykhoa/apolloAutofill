@@ -20,7 +20,10 @@ const resolvers = {
     potatoQuery: () => isPotato,
   },
   Mutation: {
-    potatoAuth: () => isPotato,
+    potatoAuth: () => {
+      console.log('huh')
+      return isPotato
+    },
     potatoPubCred: () => isPotato,
   },
 };

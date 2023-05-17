@@ -103,7 +103,6 @@ function PasswordView({
 function PubCredView({
   setPubCredVerifiedState,
   pubCredState,
-  setPasswordState,
   setPubCredState,
 }) {
   const [potatoAuthRequest] = useMutation(POTATO_AUTH_MUTATION, {
@@ -114,10 +113,8 @@ function PubCredView({
   return (
     <form>
       <input
-        name="email"
-        id="text-input-email"
         aria-invalid="false"
-        placeholder=" "
+        placeholder="Email"
         value={pubCredState}
         onChange={(e) => setPubCredState(e.target.value)}
       />
